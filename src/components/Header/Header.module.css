@@ -9,5 +9,9 @@
 .header strong {
   font-size: 2.5rem;
   margin-left: 0.75rem;
-  color: var(--blue);
+  background-image: linear-gradient(to right, var(--blue), var(--purple));
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
