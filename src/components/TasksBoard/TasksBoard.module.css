@@ -2,6 +2,7 @@
   display: flex;
   margin: 0 22rem;
   justify-content: center;
+  flex-direction: column;
 }
 
 .form {
@@ -9,7 +10,8 @@
   width: 100%;
   height: 3.4rem;
   justify-content: center;
-  margin: -1.7rem;
+  margin-top: -1.7rem;
+  margin-bottom: 4.5rem;
   gap: 1rem;
 }
 
@@ -19,14 +21,19 @@
   color: var(--gray-300);
   resize: none;
   padding: 1rem;
-  border: 0;
   border: 1px solid var(--gray-700);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
 }
 
+.form textarea:focus-within {
+  outline: transparent;
+  box-shadow: 0 0 0 1px var(--purple-dark);
+  color: var(--gray-100);
+}
+
 .form button[type="submit"] {
-  background: var(--blue);
+  background: var(--blue-dark);
   padding: 1rem;
   border-radius: 8px;
   border: 0;
@@ -41,5 +48,58 @@
 }
 
 .form button[type="submit"]:hover {
-  background: var(--blue-dark);
+  background: var(--blue);
+}
+
+.progress {
+  font-size: 0.875rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.progress div {
+  display: flex;
+  gap: 10px;
+}
+
+.progress span {
+  color: var(--blue);
+}
+
+.progress div:last-child span {
+  color: var(--purple);
+}
+
+.progress strong {
+  font-size: 0.75rem;
+  color: var(--gray-200);
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--gray-400);
+}
+
+.emptyBoard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 18rem;
+  border-top: 1px solid #333333;
+  border-radius: 8px;
+}
+
+.emptyBoard img {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 1rem;
+}
+
+.emptyBoard strong {
+  line-height: 1.4;
+}
+
+.tasksBoard {
 }
