@@ -107,13 +107,35 @@
   flex-direction: column;
 }
 
-.tasksBoard div {
+.tasksBoard .taskWrapper {
   display: flex;
-  /* mudar para rem */
-  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
   border-radius: 8px;
   background-color: var(--gray-400);
   padding: 1rem;
   border: 1px solid var(--gray-300);
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.tasksBoard .taskWrapper div:first-of-type {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.taskWrapper button {
+  background: transparent;
+  border: 0;
+  color: var(--gray-300);
+  cursor: pointer;
+  line-height: 0;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+
+  transition: color 0.1s;
+}
+
+.taskWrapper button:hover {
+  color: var(--danger);
 }

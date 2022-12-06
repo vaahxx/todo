@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { TagSimple, Trash } from "phosphor-react";
 import plusIcon from "../../assets/plus.svg";
 import clipboard from "../../assets/clipboard.svg";
 import styles from "./TasksBoard.module.css";
@@ -24,6 +25,12 @@ export function TasksBoard() {
       },
     ]);
     setCreatedTasksCounter((previous) => previous + 1);
+  }
+
+  function handleDeleteTask(taskId: string) {
+    const filteredTasks = tasks.filter((task) => task.id !== taskId);
+    setTasks([...filteredTasks]);
+    setCreatedTasksCounter((previous) => previous - 1);
   }
 
   function handleCheckboxChange(taskId: string) {
@@ -65,16 +72,27 @@ export function TasksBoard() {
       ) : (
         <div className={styles.tasksBoard}>
           {tasks.map((task) => (
-            <div key={task.id}>
-              <input
-                type="checkbox"
-                id={task.id}
-                name={task.content}
-                value={task.content}
-                checked={task.isComplete}
-                onChange={() => handleCheckboxChange(task.id)}
-              />
-              <p>{task.content}</p>
+            <div key={task.id} className={styles.taskWrapper}>
+              <div>
+                <input
+                  type="checkbox"
+                  id={task.id}
+                  name={task.content}
+                  value={task.content}
+                  checked={task.isComplete}
+                  onChange={() => handleCheckboxChange(task.id)}
+                />
+                <p>{task.content}</p>
+              </div>
+
+              <div>
+                <button
+                  onClick={() => handleDeleteTask(task.id)}
+                  title="Remove task"
+                >
+                  <Trash size={24} />
+                </button>
+              </div>
             </div>
           ))}
         </div>
