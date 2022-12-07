@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { TagSimple, Trash } from "phosphor-react";
+import { Trash } from "phosphor-react";
 import plusIcon from "../../assets/plus.svg";
 import clipboard from "../../assets/clipboard.svg";
 import styles from "./TasksBoard.module.css";
@@ -12,10 +12,17 @@ export function TasksBoard() {
   const [createdTasksCounter, setCreatedTasksCounter] = useState(0);
   const [concludedTasksCounter, setConcludedTasksCounter] = useState(0);
 
+  useEffect(() => {
+    const createdTasks = tasks.length;
+    setCreatedTasksCounter(createdTasks);
+
+    const concludedTasks = tasks.filter((task) => task.isComplete).length;
+    setConcludedTasksCounter(concludedTasks);
+  }, [tasks]);
+
   function handleCreateTask(ev: React.SyntheticEvent<HTMLFormElement>) {
     ev.preventDefault();
     const value = ev.currentTarget.content.value;
-    console.log(ev.currentTarget);
     setTasks([
       ...tasks,
       {
@@ -24,13 +31,11 @@ export function TasksBoard() {
         isComplete: false,
       },
     ]);
-    setCreatedTasksCounter((previous) => previous + 1);
   }
 
   function handleDeleteTask(taskId: string) {
     const filteredTasks = tasks.filter((task) => task.id !== taskId);
     setTasks([...filteredTasks]);
-    setCreatedTasksCounter((previous) => previous - 1);
   }
 
   function handleCheckboxChange(taskId: string) {
@@ -64,7 +69,9 @@ export function TasksBoard() {
         </div>
         <div>
           <span>Concluded</span>
-          <strong>{concludedTasksCounter}</strong>
+          <strong>
+            {concludedTasksCounter} of {createdTasksCounter}
+          </strong>
         </div>
       </div>
       {!tasks.length ? (
