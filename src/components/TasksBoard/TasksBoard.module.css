@@ -122,6 +122,7 @@
   display: flex;
   gap: 0.75rem;
 }
+
 .taskWrapper input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -161,4 +162,9 @@
 
 .taskWrapper button:hover {
   color: var(--danger);
+}
+
+.checked {
+  text-decoration: line-through;
+  color: var(--gray-300);
 }

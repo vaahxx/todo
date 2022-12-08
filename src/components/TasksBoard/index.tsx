@@ -89,7 +89,11 @@ export function TasksBoard() {
                   checked={task.isComplete}
                   onChange={() => handleCheckboxChange(task.id)}
                 />
-                <p>{task.content}</p>
+                {task.isComplete ? (
+                  <p className={styles.checked}>{task.content}</p>
+                ) : (
+                  <p>{task.content}</p>
+                )}
               </div>
 
               <div>
