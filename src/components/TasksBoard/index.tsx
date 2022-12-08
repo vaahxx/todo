@@ -31,6 +31,9 @@ export function TasksBoard() {
         isComplete: false,
       },
     ]);
+
+    const textarea = document.getElementById("newTask") as HTMLInputElement;
+    textarea.value = "";
   }
 
   function handleDeleteTask(taskId: string) {
@@ -56,7 +59,12 @@ export function TasksBoard() {
   return (
     <div className={styles.wrapper}>
       <form className={styles.form} onSubmit={handleCreateTask}>
-        <textarea placeholder="Add new task" name="content" />
+        <textarea
+          placeholder="Add new task"
+          name="content"
+          // value=""
+          id="newTask"
+        />
         <button type="submit">
           Create
           <img src={plusIcon} alt="plus-icon"></img>
