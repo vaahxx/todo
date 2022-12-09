@@ -1,6 +1,6 @@
 # todo
 
-To-do app
+Project of a to-do app made with react and CSS modules
 
 live: https://todo-livid-theta.vercel.app/
 
