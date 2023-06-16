@@ -89,6 +89,7 @@
   height: 18rem;
   border-top: 1px solid #333333;
   border-radius: 8px;
+  color: var(--gray-300);
 }
 
 .emptyBoard img {
